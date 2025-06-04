@@ -183,13 +183,13 @@ if (finalSection && mainImage && collageItems.length > 0) {
         visibility: 'hidden'
     });
 
-    // Create the timeline
+    // Create the timeline with smoother parameters
     const finalTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: finalSection,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.5,
+            scrub: 2.5, // Increased scrub value for even smoother transitions
             pin: true,
             anticipatePin: 1,
             onUpdate: (self) => {
@@ -199,7 +199,7 @@ if (finalSection && mainImage && collageItems.length > 0) {
         }
     });
 
-    // Main image zoom animation
+    // Main image zoom animation with smoother easing
     finalTimeline
         .fromTo(mainImage, {
             scale: 1,
@@ -207,38 +207,52 @@ if (finalSection && mainImage && collageItems.length > 0) {
         }, {
             scale: 0.6,
             y: -50,
-            duration: 3,
-            ease: "power2.inOut"
+            duration: 8, // Increased duration for slower animation
+            ease: "power1.inOut" // Smooth easing
         })
-        // Animate collage items
+        // Animate collage items with smoother stagger
         .to(collageItems, {
             scale: 1,
             opacity: 1,
             x: 0,
             y: 0,
-            duration: 2,
+            duration: 6, // Increased duration for slower animation
             stagger: {
-                amount: 1,
-                from: "random"
+                amount: 3, // Increased stagger amount for slower sequential animation
+                from: "random",
+                ease: "power1.inOut" // Smooth easing for stagger
             },
-            ease: "power3.out"
-        }, "-=1")
-        // Animate banner overlay
+            ease: "power1.inOut" // Smooth easing
+        }, "-=3") // Adjusted overlap timing
+        // Animate banner overlay with smoother transition
         .to(bannerOverlay, {
             left: '0%',
             opacity: 1,
             visibility: 'visible',
-            duration: 1,
-            ease: "power2.inOut"
-        }, "-=0.5");
+            duration: 4, // Increased duration for slower animation
+            ease: "power1.inOut" // Smooth easing
+        }, "-=2"); // Adjusted overlap timing
 
-    // Toggle button functionality
+    // Toggle button functionality with smooth transitions
     toggleButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            toggleButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
+            // Remove active class from all buttons with smooth transition
+            toggleButtons.forEach(btn => {
+                gsap.to(btn, {
+                    opacity: 0.7,
+                    duration: 0.5, // Increased duration for smoother transition
+                    ease: "power1.inOut",
+                    onComplete: () => btn.classList.remove('active')
+                });
+            });
+            
+            // Add active class to clicked button with smooth transition
+            gsap.to(button, {
+                opacity: 1,
+                duration: 0.5, // Increased duration for smoother transition
+                ease: "power1.inOut",
+                onComplete: () => button.classList.add('active')
+            });
             
             // Get the selected aesthetic
             const selectedAesthetic = button.dataset.aesthetic;
@@ -249,8 +263,13 @@ if (finalSection && mainImage && collageItems.length > 0) {
         });
     });
 
-    // Set initial active state
-    toggleButtons[0].classList.add('active');
+    // Set initial active state with smooth transition
+    gsap.to(toggleButtons[0], {
+        opacity: 1,
+        duration: 0.5, // Increased duration for smoother transition
+        ease: "power1.inOut",
+        onComplete: () => toggleButtons[0].classList.add('active')
+    });
 }
 
 // Fade in elements on scroll
