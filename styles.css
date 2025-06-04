@@ -1,0 +1,652 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 2rem;
+}
+
+.welcome-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.main-heading {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Cloud Section */
+.cloud-section {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Adjust height as needed */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cloud-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.cloud-text-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #333; /* Adjust text color for readability */
+}
+
+.cloud-text-overlay h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Villa Section */
+.villa-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.villa-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.villa-image h2 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Gallery Section */
+
+/* Immersive Island Section */
+.immersive-island-section {
+    height: 100vh; /* Extended height for animation scroll */
+    position: relative;
+    overflow: hidden;
+}
+
+.immersive-island-section .island-image-container {
+    position: fixed; /* Keep image in viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1; /* Ensure it's visible */
+}
+
+.immersive-island-section .island-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center center;
+    transform: scale(1); /* Initial scale */
+}
+
+/* Final Section */
+.final-section {
+    position: relative;
+    width: 100%;
+    height: 200vh;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+.main-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center center;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    opacity: 0;
+    z-index: 3;
+}
+
+.text-overlay h2 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-overlay p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.collage-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.collage-item {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Position the collage items */
+.collage-item[data-position="top-left"] {
+    top: 10%;
+    left: 5%;
+}
+
+.collage-item[data-position="top-right"] {
+    top: 10%;
+    right: 5%;
+}
+
+.collage-item[data-position="middle-left"] {
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+}
+
+.collage-item[data-position="middle-right"] {
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+}
+
+.collage-item[data-position="bottom-left"] {
+    bottom: 10%;
+    left: 5%;
+}
+
+.collage-item[data-position="bottom-right"] {
+    bottom: 10%;
+    right: 5%;
+}
+
+@media (max-width: 768px) {
+    .collage-item {
+        width: 150px;
+        height: 150px;
+    }
+
+    .text-overlay h2 {
+        font-size: 2.5rem;
+    }
+
+    .text-overlay p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Footer */
+footer {
+    background: #000;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-heading {
+        font-size: 2.5rem;
+    }
+
+    .welcome-text {
+        font-size: 1.2rem;
+    }
+
+    .cloud-text-overlay h2 {
+        font-size: 2rem;
+    }
+
+    .villa-image h2,
+    .final-content h2 {
+        font-size: 2rem;
+    }
+
+    .text-block {
+        font-size: 1.4rem;
+        max-width: 90%;
+    }
+    .thumbnail-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .thumbnail {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 2rem;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .text-block {
+        font-size: 1.2rem;
+    }
+    .thumbnail-grid {
+        gap: 10px;
+    }
+    .toggle-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+    padding: 10px;
+    /* Style for the hamburger icon */
+}
+
+.hamburger {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active .hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Menu Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially off-screen */
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Made more transparent */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-overlay.active {
+    right: 0; /* Slide in */
+}
+
+.menu-content {
+    text-align: center;
+    color: white;
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0; /* Spacing below links */
+}
+
+.menu-content ul li {
+    margin: 30px 0; /* Large spacing between links */
+}
+
+.menu-content ul li a {
+    color: white; /* Monochrome link color */
+    text-decoration: none;
+    font-family: 'Georgia', serif; /* Example elegant font - consider replacing with a specific luxury font */
+    font-size: 2.5rem; /* Large font size */
+    font-weight: 300;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transition for hover glow */
+}
+
+.menu-content ul li a:hover {
+    color: #FFD700; /* Gold color for hover */
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); /* Soft hover glow */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Spacing between icons */
+    margin-top: 40px;
+}
+
+.social-icons a {
+    color: white; /* Monochrome icon color */
+    font-size: 1.8rem; /* Icon size */
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #FFD700; /* Gold color for hover */
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .menu-overlay {
+        width: 400px; /* Example width for desktop */
+        right: -400px; /* Initially off-screen */
+    }
+
+    .menu-overlay.active {
+        right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu-content ul li {
+        margin: 20px 0; /* Slightly less spacing on mobile */
+    }
+
+    .menu-content ul li a {
+        font-size: 1.8rem; /* Smaller font size on mobile */
+    }
+
+    .social-icons {
+        gap: 20px;
+    }
+
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+}
+
+/* What Makes RON Unique Section */
+.unique-features-section {
+    background-color: #f8f8f8; /* Light background */
+    padding: 80px 20px;
+    text-align: center;
+    color: #333; /* Dark text for headings and descriptions */
+}
+
+.unique-features-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.unique-features-section .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: #333; /* Dark color for the title */
+}
+
+.unique-features-section .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.unique-features-section .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.unique-features-section .icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e0e7ff; /* Light blue background for circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.unique-features-section .icon-circle i {
+    font-size: 36px;
+    color: #3a70ff; /* Blue color for icons */
+}
+
+.unique-features-section .feature-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333; /* Dark color for feature titles */
+}
+
+.unique-features-section .feature-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #3a70ff; /* Blue color for subtitles */
+}
+
+/* Cloud Transition Section */
+.cloud-transition {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Adjusted height */
+    margin-top: -80px; /* Adjusted overlap */
+    overflow: hidden;
+    z-index: 2;
+}
+
+.cloud-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/cloud.png'); /* Use the provided cloud PNG here */
+    background-size: 100% auto; /* Zoom to fill full width, maintain aspect ratio */
+    background-repeat: no-repeat; /* Display only one image */
+    background-position: bottom; /* Position the bottom of the cloud at the bottom of the container */
+    opacity: 1; /* Full opacity */
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+    mix-blend-mode: normal; /* Reset blend mode */
+    filter: none; /* Remove filter */
+}
+
+.cloud-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0), /* Transparent white at top */
+        rgba(255, 255, 255, 0.5) /* Semi-transparent white at bottom */
+    ); /* Subtle white gradient */
+    z-index: 3; /* Ensure text is above clouds */
+}
+
+.cloud-content h2 {
+    color: #000; /* Dark text color */
+    font-size: 2.5rem;
+    font-weight: 400; /* Adjusted font weight */
+    text-shadow: none; /* Removed text shadow */
+    max-width: 800px;
+    line-height: 1.4;
+    opacity: 1; /* Keep text visible */
+    transform: translateY(0); /* Remove initial transform */
+    animation: none; /* Remove animation */
+    letter-spacing: 0;
+    margin-bottom: 10px; /* Space below main heading */
+}
+
+.cloud-content p {
+    color: #333; /* Dark text color for description */
+    font-size: 1rem;
+    font-weight: 300;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cloud-transition {
+        height: 150px;
+        margin-top: -40px;
+    }
+
+    .cloud-content h2 {
+        font-size: 1.8rem;
+        padding: 0 15px;
+    }
+
+    .cloud-content p {
+        font-size: 0.9rem;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cloud-transition {
+        height: 120px;
+    }
+
+    .cloud-content h2 {
+        font-size: 1.5rem;
+    }
+} 

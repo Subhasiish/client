@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Republic of Nature - Luxury Real Estate</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="main" data-scroll-container>
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');">
+        <div class="hero-content">
+            <!-- <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Republic of Nature Logo" class="logo"> -->
+            <h2 class="welcome-text">Welcome to the Republic of Nature</h2>
+            <h1 class="main-heading">Republic of Nature</h1>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+         <!-- <div class="cloud-text-overlay bottom-cloud-text">
+             <h2>A Haven of Luxury and Serenity</h2>
+         </div> -->
+    </section>
+
+    <!-- Cloud Transition Section -->
+    <!-- <div class="cloud-transition">
+        <div class="cloud-overlay"></div>
+        <div class="cloud-content">
+            <h2>Discover a sanctuary where nature meets refined living.</h2>
+        </div>
+    </div> -->
+
+    <!-- What Makes RON Unique Section -->
+    <section class="unique-features-section">
+        <div class="container">
+            <h2 class="section-title">What Makes RON Unique?</h2>
+            <!-- Add a subtitle if needed based on design -->
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-tree"></i></div>
+                    <h3>Wildlife First</h3>
+                    <p class="feature-subtitle">Conservation Commitment</p>
+                    <p>Protecting native species and habitats</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-water"></i></div>
+                    <h3>Ocean of Opportunity</h3>
+                    <p class="feature-subtitle">Marine & Beach Access</p>
+                    <p>Direct access to pristine beaches</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-heart"></i></div>
+                    <h3>The Transformational Hospitality</h3>
+                    <p class="feature-subtitle">Wellness Integration</p>
+                    <p>Holistic wellness experiences</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-leaf"></i></div>
+                    <h3>30 Acres of Pristine</h3>
+                    <p class="feature-subtitle">Preserved Paradise</p>
+                    <p>Untouched natural environments</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-recycle"></i></div>
+                    <h3>Private Wellness Concepts</h3>
+                    <p class="feature-subtitle">Rejuvenate Organised Living</p>
+                    <p>Sustainable luxury practices</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-bolt"></i></div>
+                    <h3>Integrated eco-Centric</h3>
+                    <p class="feature-subtitle">EKO Philosophy</p>
+                    <p>Carbon-neutral operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villa Section -->
+    <section class="villa-section">
+        <div class="villa-image" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');">
+            <h2>A Cohesive Vision</h2>
+        </div>
+         <!-- <div class="cloud-text-overlay top-cloud-text">
+             <h2>Crafted Interiors Designed for Coastal Living</h2>
+         </div> -->
+    </section>
+
+    <!-- Immersive Island Section (formerly Gallery Section) -->
+    <section class="immersive-island-section">
+        <div class="island-image-container">
+            <img src="./assets/Horizontal-scroll.jpg.webp" alt="Luxury Island">
+        </div>
+    </section>
+
+    <!-- Final Section -->
+    <section class="final-section">
+        <div class="main-image-container">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920" alt="Luxury Interior" class="main-image">
+            <div class="text-overlay">
+                <h2>Where Luxury Meets Nature</h2>
+                <p>Discover your perfect sanctuary</p>
+            </div>
+        </div>
+        <div class="collage-container">
+            <div class="collage-item" data-position="top-left">
+                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=400" alt="Luxury Interior 1">
+            </div>
+            <div class="collage-item" data-position="top-right">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=400" alt="Luxury Interior 2">
+            </div>
+            <div class="collage-item" data-position="middle-left">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400" alt="Luxury Interior 3">
+            </div>
+            <div class="collage-item" data-position="middle-right">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400" alt="Luxury Interior 4">
+            </div>
+            <div class="collage-item" data-position="bottom-left">
+                <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=400" alt="Luxury Interior 5">
+            </div>
+            <div class="collage-item" data-position="bottom-right">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400" alt="Luxury Interior 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Republic of Nature. All rights reserved.</p>
+            <p>Contact: info@republicofnature.com</p>
+        </div>
+    </footer>
+
+    </div> <!-- End of .main -->
+
+    <!-- Hamburger Menu -->
+    <div class="menu-toggle">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay">
+        <nav class="menu-content">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#unique-features">Unique</a></li>
+                <li><a href="#villa-section">Villa</a></li>
+                <li><a href="#immersive-island-section">Island</a></li>
+                <li><a href="#final-section">Final</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Locomotive Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/dist/locomotive-scroll.min.js"></script>
+    
+    <!-- Main Script -->
+    <script src="script.js"></script>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</body>
+</html> 
