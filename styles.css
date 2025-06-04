@@ -594,7 +594,7 @@ body {
     width: 57%;
     height: 18%;
     padding: 2rem;
-    background: rgba(139, 69, 19, 0.8);
+    background: rgb(54 101 143 / 80%);;
     color: white;
     text-align: center;
     z-index: 3;
