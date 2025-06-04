@@ -602,7 +602,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 112px;
     opacity: 0; /* Start completely hidden */
     visibility: hidden; /* Ensure it's not clickable when hidden */
     border-radius: 10px;
