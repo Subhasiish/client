@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Republic of Nature - Luxury Real Estate Landing Page
 
 A modern, responsive landing page for a luxury real estate website featuring smooth animations, interactive elements, and seamless transitions.
@@ -59,3 +60,7 @@ To customize the content:
 ## License
 
 This project is licensed under the MIT License. 
+=======
+# client
+A normal website 
+>>>>>>> bb8488b4a528a392f04a30b3268128e043d93683
