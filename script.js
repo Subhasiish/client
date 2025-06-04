@@ -1,11 +1,29 @@
 // Initialize GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+// Navigation scroll effect
+const mainNav = document.querySelector('.main-nav');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        mainNav.classList.add('scrolled');
+    } else {
+        mainNav.classList.remove('scrolled');
+    }
+});
+
 // Hero Section Animation
-gsap.from('.hero-content', {
+gsap.from('.hero-text', {
     duration: 1.5,
     y: 100,
     opacity: 0,
+    ease: 'power3.out'
+});
+
+gsap.from('.hero-cta', {
+    duration: 1.5,
+    y: 50,
+    opacity: 0,
+    delay: 0.5,
     ease: 'power3.out'
 });
 
@@ -55,9 +73,9 @@ const immersiveTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: '.immersive-island-section',
         start: 'top top',
-        end: '+=1000', // Increased scroll distance for smoother control
+        end: '+=2000', // Significantly increased scroll distance for slower, smoother control
         pin: true,
-        scrub: 0.5, // Reduced scrub value for smoother scrubbing
+        scrub: 2, // Increased scrub value for even smoother transitions
         anticipatePin: 1,
         onUpdate: (self) => {
             // Optional: Add progress indicator
@@ -73,36 +91,30 @@ immersiveTimeline
         scale: 2.5,
         x: '0%', // Keep at left edge
         y: '0%', // Keep at bottom
-        duration: 4, // Increased duration
-        ease: 'power3.inOut' // Smoother easing
+        duration: 8, // Significantly increased duration
+        ease: 'power1.inOut' // Smoother easing with less acceleration
     })
 
     // Phase 2: Horizontal pan (move across to the right part of the image)
     .to(islandImage, {
         x: '-70%', // Pan to the right - adjust based on image content and zoom
-        duration: 4, // Increased duration
-        ease: 'power3.inOut' // Smoother easing
+        duration: 8, // Significantly increased duration
+        ease: 'power1.inOut' // Smoother easing with less acceleration
     })
 
     // Phase 3: Vertical pan (simulate moving upward over the image content)
     .to(islandImage, {
         y: '100%', // Pan upward - adjust based on image content and zoom
-        duration: 4, // Increased duration
-        ease: 'power3.inOut' // Smoother easing
+        duration: 8, // Significantly increased duration
+        ease: 'power1.inOut' // Smoother easing with less acceleration
     })
 
     // Phase 4: Second horizontal pan (continue moving horizontally)
     .to(islandImage, {
         x: '-100%', // Pan further to the right or left - adjust
-        duration: 4, // Increased duration
-        ease: 'power3.inOut' // Smoother easing
-    })
-
-    //  .to(islandImage, {
-    //     y: '-100%', // Pan upward - adjust based on image content and zoom
-    //     duration: 4, // Increased duration
-    //     ease: 'power3.inOut' // Smoother easing
-    // });
+        duration: 8, // Significantly increased duration
+        ease: 'power1.inOut' // Smoother easing with less acceleration
+    });
 
 // Optional: Cursor-following parallax effect - TEMPORARILY COMMENTED OUT
 // document.addEventListener('mousemove', (e) => {
@@ -127,35 +139,32 @@ immersiveTimeline
 // Final Section Animation
 const finalSection = document.querySelector('.final-section');
 const mainImage = document.querySelector('.main-image');
-const textOverlay = document.querySelector('.text-overlay');
 const collageItems = document.querySelectorAll('.collage-item');
+const toggleButtons = document.querySelectorAll('.toggle-btn');
+const bannerOverlay = document.querySelector('.banner-overlay');
 
-if (finalSection && mainImage && textOverlay && collageItems.length > 0) {
+if (finalSection && mainImage && collageItems.length > 0) {
     // Set initial states
     gsap.set(collageItems, {
         scale: 0.5,
         opacity: 0,
         x: function(index) {
-            const positions = ['top-left', 'top-right', 'middle-left', 'middle-right', 'bottom-left', 'bottom-right'];
-            const position = positions[index] || 'top-left';
+            const positions = ['top-right', 'bottom-left', 'bottom-right'];
+            const position = positions[index] || 'top-right';
             switch(position) {
-                case 'top-left':
-                case 'middle-left':
-                case 'bottom-left':
-                    return -300;
                 case 'top-right':
-                case 'middle-right':
                 case 'bottom-right':
                     return 300;
+                case 'bottom-left':
+                    return -300;
                 default:
                     return 0;
             }
         },
         y: function(index) {
-            const positions = ['top-left', 'top-right', 'middle-left', 'middle-right', 'bottom-left', 'bottom-right'];
-            const position = positions[index] || 'top-left';
+            const positions = ['top-right', 'bottom-left', 'bottom-right'];
+            const position = positions[index] || 'top-right';
             switch(position) {
-                case 'top-left':
                 case 'top-right':
                     return -200;
                 case 'bottom-left':
@@ -167,13 +176,20 @@ if (finalSection && mainImage && textOverlay && collageItems.length > 0) {
         }
     });
 
+    // Set initial state for banner
+    gsap.set(bannerOverlay, {
+        left: '-100%',
+        opacity: 0,
+        visibility: 'hidden'
+    });
+
     // Create the timeline
     const finalTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: finalSection,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.2, // Reduced from 1 for smoother scrubbing
+            scrub: 0.5,
             pin: true,
             anticipatePin: 1,
             onUpdate: (self) => {
@@ -189,62 +205,53 @@ if (finalSection && mainImage && textOverlay && collageItems.length > 0) {
             scale: 1,
             y: 0
         }, {
-            scale: 0.7,
+            scale: 0.6,
             y: -50,
-            duration: 3, // Increased duration
-            ease: "power2.inOut", // Smoother easing
-            overwrite: "auto" // Prevents animation conflicts
+            duration: 3,
+            ease: "power2.inOut"
         })
-        // Fade in text overlay
-        .to(textOverlay, {
-            opacity: 1,
-            y: 0,
-            duration: 2, // Increased duration
-            ease: "power3.out", // Smoother easing
-            overwrite: "auto"
-        }, "-=0.5") // Adjusted overlap timing
         // Animate collage items
         .to(collageItems, {
             scale: 1,
             opacity: 1,
             x: 0,
             y: 0,
-            duration: 2, // Increased duration
+            duration: 2,
             stagger: {
-                amount: 1.2, // Increased stagger amount
-                from: "random",
-                grid: "auto", // Added grid-based staggering
-                axis: "xy" // Stagger in both x and y directions
+                amount: 1,
+                from: "random"
             },
-            ease: "power3.out", // Smoother easing
-            overwrite: "auto"
-        }, "-=1"); // Adjusted overlap timing
-}
+            ease: "power3.out"
+        }, "-=1")
+        // Animate banner overlay
+        .to(bannerOverlay, {
+            left: '0%',
+            opacity: 1,
+            visibility: 'visible',
+            duration: 1,
+            ease: "power2.inOut"
+        }, "-=0.5");
 
-// Initial state for elements before animation starts
-// Removed problematic gsap.set calls that caused ReferenceErrors
-
-// Button toggle functionality (optional, based on image; not scroll-triggered)
-const toggleButtons = finalSection.querySelectorAll('.button-toggle .toggle-btn');
-
-toggleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        toggleButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        // Add logic here to change interior aesthetics (images) based on active button
-        // This would likely involve changing image sources or CSS classes
+    // Toggle button functionality
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Get the selected aesthetic
+            const selectedAesthetic = button.dataset.aesthetic;
+            
+            // Here you would typically change the images based on the selected aesthetic
+            // For example:
+            // updateImages(selectedAesthetic);
+        });
     });
-});
 
-// Smooth scroll for navigation - REMOVED in favor of Lenis
-// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault();
-//         document.querySelector(this.getAttribute('href')).scrollIntoView({
-//             behavior: 'smooth'
-//         });
-//     });
-// });
+    // Set initial active state
+    toggleButtons[0].classList.add('active');
+}
 
 // Fade in elements on scroll
 const fadeElements = document.querySelectorAll('.cloud-text-overlay, .villa-image h2');
@@ -274,74 +281,42 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Menu Toggle (New Implementation)
+// Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const menuOverlay = document.querySelector('.menu-overlay');
-const menuLinks = document.querySelectorAll('.menu-content a');
-
-console.log('Script loaded. Menu elements:', { menuToggle, menuOverlay, menuLinks });
-
-// Initial state of the menu overlay (hidden off-screen)
-gsap.set(menuOverlay, { right: '-100%', autoAlpha: 0 }); // Set initial opacity to 0 as well
-
-// GSAP timeline for menu animation
-const menuTimeline = gsap.timeline({
-    paused: true, // Pause initially
-    defaults: { ease: 'power3.inOut', duration: 0.8 } // Increased duration for smoother animation
-});
-
-menuTimeline.to(menuOverlay, { right: '0%', autoAlpha: 1 }); // Slide in and fade in
+const menuClose = document.querySelector('.menu-close');
+const menuLinks = document.querySelectorAll('.menu-links a');
 
 // Toggle menu function
 function toggleMenu() {
     menuToggle.classList.toggle('active');
-    if (menuToggle.classList.contains('active')) {
-        console.log('Opening menu');
-        menuTimeline.play();
-        document.body.style.overflow = 'hidden'; // Lock body scroll
+    menuOverlay.classList.toggle('active');
+    
+    if (menuOverlay.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
     } else {
-        console.log('Closing menu');
-        menuTimeline.reverse();
-        document.body.style.overflow = ''; // Unlock body scroll
+        document.body.style.overflow = '';
     }
 }
 
 // Event listeners
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        console.log('Menu toggle clicked');
-        toggleMenu();
-    });
-} else {
-    console.error('Menu toggle button not found');
-}
+menuToggle.addEventListener('click', toggleMenu);
+menuClose.addEventListener('click', toggleMenu);
 
-if (menuLinks.length > 0) {
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            console.log('Menu link clicked', link.getAttribute('href'));
-            // Check if menu is open before trying to close
-            if (menuToggle.classList.contains('active')) {
-                 toggleMenu(); // Close menu
-            }
-        });
-    });
-} else {
-     console.warn('No menu links found');
-}
-
-// Close menu when clicking outside (on the overlay itself)
-if (menuOverlay) {
-    menuOverlay.addEventListener('click', (e) => {
-        if (e.target === menuOverlay) {
-            console.log('Clicked outside menu overlay');
-             // Check if menu is open before trying to close
-             if (menuToggle.classList.contains('active')) {
-                 toggleMenu(); // Close menu
-            }
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (menuOverlay.classList.contains('active')) {
+            toggleMenu();
         }
     });
-}
+});
+
+// Close menu when clicking outside
+menuOverlay.addEventListener('click', (e) => {
+    if (e.target === menuOverlay) {
+        toggleMenu();
+    }
+});
 
 // Initialize Locomotive Scroll and integrate with ScrollTrigger
 function init() {
