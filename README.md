@@ -1,88 +1,60 @@
-# Immersive Island Experience
+# Republic of Nature - Luxury Real Estate Website
 
-A modern, interactive web experience featuring smooth scroll animations and immersive visual effects.
+A modern, responsive website for Republic of Nature luxury real estate, featuring immersive scroll animations and elegant design.
 
 ## Features
 
-### 1. Navigation
-- Smooth scroll-based navigation effects
-- Responsive navigation menu with overlay
-- Dynamic scroll indicator
-
-### 2. Hero Section
-- Fade-in animations for text and CTA elements
-- Smooth cloud transition effects
 - Responsive design
+- Immersive scroll animations
+- Modern UI/UX
+- Interactive elements
+- Mobile-friendly navigation
 
-### 3. Immersive Island Section
-The centerpiece of the experience features a sophisticated scroll-based animation sequence:
+## Tech Stack
 
-#### Animation Parameters
-- Scroll distance: 2000px
-- Smooth scrubbing with value: 2
-- Four distinct animation phases:
-  1. Initial zoom to bottom left
-  2. Horizontal pan to right
-  3. Vertical upward movement
-  4. Final horizontal pan
-
-#### Animation Timing
-- Each phase duration: 8 seconds
-- Smooth easing using `power1.inOut`
-- Pinned section during animation
-- Transform origin: bottom left (0% 100%)
-
-### 4. Final Section
-- Dynamic collage animation
-- Toggle-able aesthetic views
-- Smooth banner overlay transitions
-
-## Technical Implementation
-
-### Dependencies
+- HTML5
+- CSS3
+- JavaScript
 - GSAP (GreenSock Animation Platform)
-- ScrollTrigger plugin
 - Locomotive Scroll
+- Font Awesome Icons
 
-### Key Animation Features
-- Smooth scroll-based animations
-- Parallax effects
-- Responsive design
-- Cross-browser compatibility
+## Deployment
 
-## Setup Instructions
+This project is configured for deployment on Vercel. To deploy:
 
-1. Install dependencies:
-```bash
-npm install
+1. Push your code to a GitHub repository
+2. Go to [Vercel](https://vercel.com)
+3. Create a new project
+4. Import your GitHub repository
+5. Deploy
+
+## Local Development
+
+To run this project locally:
+
+1. Clone the repository
+2. Open `index.html` in your browser
+3. For live reload, use a local server (e.g., Live Server VS Code extension)
+
+## Project Structure
+
+```
+├── index.html          # Main HTML file
+├── styles.css          # CSS styles
+├── script.js           # JavaScript functionality
+├── assets/            # Images and other assets
+├── vercel.json        # Vercel configuration
+└── README.md          # Project documentation
 ```
 
-2. Include required scripts:
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.x.x/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.x.x/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.1/dist/locomotive-scroll.min.js"></script>
-```
+## Dependencies
 
-3. Initialize the animations:
-```javascript
-// The animations are automatically initialized when the page loads
-// No additional setup required
-```
-
-## Browser Support
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-
-## Performance Considerations
-- Optimized animations for smooth performance
-- Efficient use of GSAP for better performance
-- Smooth scrubbing for better user experience
-
-## Contributing
-Feel free to submit issues and enhancement requests!
+- GSAP: `https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js`
+- ScrollTrigger: `https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js`
+- Locomotive Scroll: `https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/dist/locomotive-scroll.min.js`
+- Font Awesome: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css`
 
 ## License
-[Add your license information here]
+
+All rights reserved © 2024 Republic of Nature

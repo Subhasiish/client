@@ -68,52 +68,81 @@ ScrollTrigger.create({
 // Immersive Island Section Scroll Animation
 const immersiveIslandSection = document.querySelector('.immersive-island-section');
 const islandImage = immersiveIslandSection.querySelector('.island-image-container img');
+const textOverlays = immersiveIslandSection.querySelectorAll('.island-text-overlay');
+
+// Reset text overlays
+textOverlays.forEach(overlay => overlay.classList.remove('active'));
 
 const immersiveTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: '.immersive-island-section',
         start: 'top top',
-        end: '+=2000', // Significantly increased scroll distance for slower, smoother control
+        end: '+=4000',
         pin: true,
-        scrub: 2, // Increased scrub value for even smoother transitions
+        scrub: 3,
         anticipatePin: 1,
         onUpdate: (self) => {
-            // Optional: Add progress indicator
-            console.log('Progress:', self.progress);
+            const progress = self.progress;
+            
+            // First text overlay (0-20%)
+            if (progress >= 0 && progress < 0.2) {
+                textOverlays[0].classList.add('active');
+                textOverlays[1].classList.remove('active');
+                textOverlays[2].classList.remove('active');
+                textOverlays[3].classList.remove('active');
+            }
+            // Second text overlay (20-45%)
+            else if (progress >= 0.2 && progress < 0.45) {
+                textOverlays[0].classList.remove('active');
+                textOverlays[1].classList.add('active');
+                textOverlays[2].classList.remove('active');
+                textOverlays[3].classList.remove('active');
+            }
+            // Third text overlay (45-70%)
+            else if (progress >= 0.45 && progress < 0.7) {
+                textOverlays[0].classList.remove('active');
+                textOverlays[1].classList.remove('active');
+                textOverlays[2].classList.add('active');
+                textOverlays[3].classList.remove('active');
+            }
+            // Fourth text overlay (70-100%)
+            else if (progress >= 0.7) {
+                textOverlays[0].classList.remove('active');
+                textOverlays[1].classList.remove('active');
+                textOverlays[2].classList.remove('active');
+                textOverlays[3].classList.add('active');
+            }
         }
     }
 });
 
 // First zoom to left bottom
 immersiveTimeline
-    .set(islandImage, { transformOrigin: '0% 100%' }) // Set transform origin to bottom left
+    .set(islandImage, { transformOrigin: '0% 100%' })
     .to(islandImage, {
         scale: 2.5,
-        x: '0%', // Keep at left edge
-        y: '0%', // Keep at bottom
-        duration: 8, // Significantly increased duration
-        ease: 'power1.inOut' // Smoother easing with less acceleration
+        x: '0%',
+        y: '0%',
+        duration: 15,
+        ease: 'power1.inOut'
     })
-
-    // Phase 2: Horizontal pan (move across to the right part of the image)
+    // Phase 2: Horizontal pan with adjusted values
     .to(islandImage, {
-        x: '-70%', // Pan to the right - adjust based on image content and zoom
-        duration: 8, // Significantly increased duration
-        ease: 'power1.inOut' // Smoother easing with less acceleration
+        x: '-40%', // Reduced to keep text centered
+        duration: 15,
+        ease: 'power1.inOut'
     })
-
-    // Phase 3: Vertical pan (simulate moving upward over the image content)
+    // Phase 3: Vertical pan with adjusted values
     .to(islandImage, {
-        y: '100%', // Pan upward - adjust based on image content and zoom
-        duration: 8, // Significantly increased duration
-        ease: 'power1.inOut' // Smoother easing with less acceleration
+        y: '60%', // Reduced to keep text centered
+        duration: 15,
+        ease: 'power1.inOut'
     })
-
-    // Phase 4: Second horizontal pan (continue moving horizontally)
+    // Phase 4: Second horizontal pan with adjusted values
     .to(islandImage, {
-        x: '-100%', // Pan further to the right or left - adjust
-        duration: 8, // Significantly increased duration
-        ease: 'power1.inOut' // Smoother easing with less acceleration
+        x: '-60%', // Reduced to keep text centered
+        duration: 15,
+        ease: 'power1.inOut'
     });
 
 // Optional: Cursor-following parallax effect - TEMPORARILY COMMENTED OUT
@@ -188,8 +217,8 @@ if (finalSection && mainImage && collageItems.length > 0) {
         scrollTrigger: {
             trigger: finalSection,
             start: "top top",
-            end: "bottom bottom",
-            scrub: 2.5, // Increased scrub value for even smoother transitions
+            end: "+=2000", // Significantly increased scroll distance
+            scrub: 2.5, // Increased scrub value for smoother transitions
             pin: true,
             anticipatePin: 1,
             onUpdate: (self) => {
@@ -210,7 +239,15 @@ if (finalSection && mainImage && collageItems.length > 0) {
             duration: 8, // Increased duration for slower animation
             ease: "power1.inOut" // Smooth easing
         })
-        // Animate collage items with smoother stagger
+        // Animate banner overlay first
+        .to(bannerOverlay, {
+            left: '0%',
+            opacity: 1,
+            visibility: 'visible',
+            duration: 4, // Increased duration for slower animation
+            ease: "power1.inOut" // Smooth easing
+        }, "-=2")
+        // Then animate collage items
         .to(collageItems, {
             scale: 1,
             opacity: 1,
@@ -222,14 +259,6 @@ if (finalSection && mainImage && collageItems.length > 0) {
                 from: "random",
                 ease: "power1.inOut" // Smooth easing for stagger
             },
-            ease: "power1.inOut" // Smooth easing
-        }, "-=3") // Adjusted overlap timing
-        // Animate banner overlay with smoother transition
-        .to(bannerOverlay, {
-            left: '0%',
-            opacity: 1,
-            visibility: 'visible',
-            duration: 4, // Increased duration for slower animation
             ease: "power1.inOut" // Smooth easing
         }, "-=2"); // Adjusted overlap timing
 
